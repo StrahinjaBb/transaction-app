@@ -8,7 +8,7 @@ public class Transaction {
     private LocalDate date;
     private String accountNumber;
     private String accountHolder;
-    private double amount;
+    private Double amount;
     private TransactionStatus status;
 
     public Transaction() {
@@ -47,11 +47,11 @@ public class Transaction {
         this.accountHolder = accountHolder;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

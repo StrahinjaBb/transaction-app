@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class TransactionService {
     @Autowired
     private final TransactionRepository repository;
+    private static final Random random = new Random();
 
     public TransactionService(TransactionRepository repository) {
         this.repository = repository;
@@ -29,6 +31,8 @@ public class TransactionService {
     }
 
     private TransactionStatus generateRandomStatus() {
-        return null;
+        TransactionStatus[] statuses = TransactionStatus.values();
+        int randomIndex = random.nextInt(statuses.length);
+        return statuses[randomIndex];
     }
 }
