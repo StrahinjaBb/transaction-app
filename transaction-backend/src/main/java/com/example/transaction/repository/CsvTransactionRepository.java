@@ -56,7 +56,6 @@ public class CsvTransactionRepository implements TransactionRepository {
     @Override
     public Transaction save(Transaction transaction) {
         try {
-            // Proveri da li fajl postoji, ako ne - kreiraj ga
             if (!Files.exists(Paths.get(csvFilePath))) {
                 Files.createFile(Paths.get(csvFilePath));
                 try (Writer writer = Files.newBufferedWriter(Paths.get(csvFilePath));
@@ -85,9 +84,5 @@ public class CsvTransactionRepository implements TransactionRepository {
         } catch (IOException e) {
             throw new RuntimeException("Failed to write to CSV file: " + csvFilePath, e);
         }
-    }
-
-    public String getCsvFilePath() {
-        return csvFilePath;
     }
 }
