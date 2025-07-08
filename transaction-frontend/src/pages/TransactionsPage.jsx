@@ -6,7 +6,7 @@ const TransactionsPage = () => {
   const [refreshKey, setRefreshKey] = useState(0);
 
   const handleTransactionAdded = () => {
-    setRefreshKey(prev => prev + 1); // This will trigger table refresh
+    setRefreshKey(prev => prev + 1);
   };
 
   return (

@@ -1,7 +1,6 @@
-// src/components/TransactionTable.jsx
 import { useState, useEffect } from 'react';
 import { getTransactions } from '../api/transactionApi';
-import StatusBadge from './StatusBadge';
+import Status from './Status';
 
 const TransactionTable = () => {
   const [transactions, setTransactions] = useState([]);
@@ -37,9 +36,9 @@ const TransactionTable = () => {
   };
 
   const formatAmount = (amount) => {
-    return new Intl.NumberFormat('sr-RS', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'RSD'
+      currency: 'EUR'
     }).format(amount);
   };
 
@@ -60,9 +59,9 @@ const TransactionTable = () => {
       <table className="transaction-table">
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Transaction Date</th>
             <th>Account number</th>
-            <th>Account holder</th>
+            <th>Account Holder Name</th>
             <th>Amount</th>
             <th>Status</th>
           </tr>
@@ -75,7 +74,7 @@ const TransactionTable = () => {
               <td>{transaction.accountHolder}</td>
               <td>{formatAmount(transaction.amount)}</td>
               <td>
-                <StatusBadge status={transaction.status} />
+                <Status status={transaction.status} />
               </td>
             </tr>
           ))}

@@ -1,4 +1,4 @@
-const StatusBadge = ({ status }) => {
+const Status = ({ status }) => {
   const getStatusColor = () => {
     switch (status.toLowerCase()) {
       case 'pending':
@@ -25,4 +25,4 @@ const StatusBadge = ({ status }) => {
   );
 };
 
-export default StatusBadge;
+export default Status;

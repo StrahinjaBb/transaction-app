@@ -5,12 +5,12 @@ const AddTransactionButton = ({ onTransactionAdded }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <>
+    <div>
       <button 
         className="add-transaction-btn"
         onClick={() => setIsModalOpen(true)}
       >
-        Add New Transaction
+        Add Transaction
       </button>
 
       <AddTransactionModal
@@ -18,7 +18,7 @@ const AddTransactionButton = ({ onTransactionAdded }) => {
         onClose={() => setIsModalOpen(false)}
         onTransactionAdded={onTransactionAdded}
       />
-    </>
+    </div>
   );
 };
 
