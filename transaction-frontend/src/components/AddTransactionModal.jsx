@@ -11,6 +11,27 @@ const AddTransactionModal = ({ isOpen, onClose, onTransactionAdded }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
+  const validateFormData = ({ date, accountNumber, accountHolder, amount }) => {
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) {
+      throw new Error('Invalid date');
+    }
+
+    const accountNumberRegex = /^\d{4}-\d{4}-\d{4}$/;
+    if (!accountNumberRegex.test(accountNumber)) {
+      throw new Error('Account number must be in format xxxx-xxxx-xxxx, where x is a number');
+    }
+
+    if (!accountHolder.trim()) {
+      throw new Error('Account holder cannot be empty');
+    }
+
+    const numericAmount = parseFloat(amount);
+    if (isNaN(numericAmount) || numericAmount <= 0) {
+      throw new Error('Amount must be a positive number');
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -29,6 +50,8 @@ const AddTransactionModal = ({ isOpen, onClose, onTransactionAdded }) => {
           !formData.accountHolder || !formData.amount) {
         throw new Error('Mandatory fields');
       }
+
+      validateFormData(formData);
 
       await addTransaction({
         ...formData,
