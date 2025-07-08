@@ -33,7 +33,8 @@ public class TransactionService {
         return repository.save(transaction);
     }
 
-    private TransactionStatus generateRandomStatus() {
+    //  Made public for simpler testing - not the best practice
+    public TransactionStatus generateRandomStatus() {
         TransactionStatus[] statuses = TransactionStatus.values();
         int randomIndex = random.nextInt(statuses.length);
         return statuses[randomIndex];
