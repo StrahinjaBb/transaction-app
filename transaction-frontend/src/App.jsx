@@ -1,13 +1,15 @@
-import AddTransactionModal from './components/AddTransactionModal';
-import TransactionTable from './components/TransactionTable';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import TransactionsPage from './pages/TransactionsPage'
 
 const App = () => {
   return (
-    <div className="app-container">
-      <TransactionTable />
-      <br/>
-      <AddTransactionModal />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/transactions" replace />} />
+        <Route path="/transactions" element={<TransactionsPage />} />
+        <Route path="*" element={<Navigate to="/transactions" replace />} />
+      </Routes>
+    </Router>
   );
 }
 

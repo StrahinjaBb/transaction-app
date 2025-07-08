@@ -69,7 +69,7 @@ const TransactionTable = () => {
         </thead>
         <tbody>
           {transactions.map((transaction) => (
-            <tr key={`${transaction.accountNumber}-${transaction.transactionDate}-${transaction.amount}`}>
+            <tr key={`${transaction.accountNumber}-${transaction.date}-${transaction.amount}`}>
               <td>{formatDate(transaction.date)}</td>
               <td>{transaction.accountNumber}</td>
               <td>{transaction.accountHolder}</td>

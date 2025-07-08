@@ -2,13 +2,13 @@ const StatusBadge = ({ status }) => {
   const getStatusColor = () => {
     switch (status.toLowerCase()) {
       case 'pending':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'yellow';
       case 'settled':
-        return 'bg-green-100 text-green-800';
+        return 'green';
       case 'failed':
-        return 'bg-red-100 text-red-800';
+        return 'red';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'grey';
     }
   };
 
@@ -19,7 +19,7 @@ const StatusBadge = ({ status }) => {
   };
 
   return (
-    <span className={`text-xs font-medium px-2.5 py-0.5 rounded-full ${getStatusColor()}`}>
+    <span className={`status-badge status-${getStatusColor()}`}>
       {statusText[status.toLowerCase()] || status}
     </span>
   );

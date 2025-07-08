@@ -1,12 +1,11 @@
-// src/components/AddTransactionModal.jsx
 import { useState } from 'react';
 import { addTransaction } from '../api/transactionApi';
 
 const AddTransactionModal = ({ isOpen, onClose, onTransactionAdded }) => {
   const [formData, setFormData] = useState({
-    transactionDate: '',
+    date: '',
     accountNumber: '',
-    accountHolderName: '',
+    accountHolder: '',
     amount: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,8 +25,8 @@ const AddTransactionModal = ({ isOpen, onClose, onTransactionAdded }) => {
     setIsSubmitting(true);
 
     try {
-      if (!formData.transactionDate || !formData.accountNumber || 
-          !formData.accountHolderName || !formData.amount) {
+      if (!formData.date || !formData.accountNumber || 
+          !formData.accountHolder || !formData.amount) {
         throw new Error('Mandatory fields');
       }
 
@@ -48,9 +47,9 @@ const AddTransactionModal = ({ isOpen, onClose, onTransactionAdded }) => {
 
   const handleClose = () => {
     setFormData({
-      transactionDate: '',
+      date: '',
       accountNumber: '',
-      accountHolderName: '',
+      accountHolder: '',
       amount: ''
     });
     setError('');
@@ -69,12 +68,12 @@ const AddTransactionModal = ({ isOpen, onClose, onTransactionAdded }) => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="transactionDate">Transaction date:</label>
+            <label htmlFor="date">Transaction date:</label>
             <input
               type="date"
-              id="transactionDate"
-              name="transactionDate"
-              value={formData.transactionDate}
+              id="date"
+              name="date"
+              value={formData.date}
               onChange={handleChange}
               required
             />
@@ -94,12 +93,12 @@ const AddTransactionModal = ({ isOpen, onClose, onTransactionAdded }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="accountHolderName">Account holder name:</label>
+            <label htmlFor="accountHolder">Account holder name:</label>
             <input
               type="text"
-              id="accountHolderName"
-              name="accountHolderName"
-              value={formData.accountHolderName}
+              id="accountHolder"
+              name="accountHolder"
+              value={formData.accountHolder}
               onChange={handleChange}
               required
             />
