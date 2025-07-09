@@ -82,3 +82,7 @@ cd transaction-frontend
 
 Backend: http://localhost:8080
 Frontend: http://localhost:5173
+
+Last but not least..
+Storage is implemented via internal CSV file in transaction-backend/src/main/resources/transactions.csv
+Changes to the data will be lost if not commited.
