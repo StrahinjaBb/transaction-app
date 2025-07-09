@@ -11,6 +11,44 @@ public class Transaction {
     private Double amount;
     private TransactionStatus status;
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    //  Builder is added to demonstrate at least one design pattern - used in tests - not needed necessarily
+    public static class Builder {
+        private final Transaction transaction = new Transaction();
+
+        public Builder date(LocalDate date) {
+            transaction.setDate(date);
+            return this;
+        }
+
+        public Builder accountNumber(String accountNumber) {
+            transaction.setAccountNumber(accountNumber);
+            return this;
+        }
+
+        public Builder accountHolder(String accountHolder) {
+            transaction.setAccountHolder(accountHolder);
+            return this;
+        }
+
+        public Builder amount(Double amount) {
+            transaction.setAmount(amount);
+            return this;
+        }
+
+        public Builder status(TransactionStatus status) {
+            transaction.setStatus(status);
+            return this;
+        }
+
+        public Transaction build() {
+            return transaction;
+        }
+    }
+
     public Transaction() {
 
     }
